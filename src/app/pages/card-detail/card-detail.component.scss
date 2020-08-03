@@ -1,0 +1,57 @@
+.card-detail {
+  .img-card {
+    max-height: calc(100vh - 265px);
+  }
+  .name {
+    display: block;
+    font-family: "Press Start 2P", cursive;
+    font-size: 26px;
+    margin-top: 10px;
+  }
+  .id {
+    color: var(--secondary);
+    display: block;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    margin: 10px 0 20px 0;
+  }
+  .features {
+    border-bottom: 2px solid var(--main-color);
+    font-family: "Press Start 2P", cursive;
+    font-size: 14px;
+    margin-top: 20px;
+    padding: 6px 8px;
+    &.types {
+      background-color: var(--info);
+      border-bottom: 2px solid var(--secondary);
+      color: var(--secondary);
+    }
+    &.attacks {
+      background-color: var(--secondary);
+      color: var(--info);
+    }
+    &.resistances {
+      background-color: var(--success);
+    }
+    &.weaknesses {
+      background-color: var(--danger);
+    }
+  }
+  .value {
+    font-size: 16px;
+    padding: 4px 8px;
+    .contrast {
+      color: var(--secondary);
+      font-size: 18px;
+      margin-left: 6px;
+    }
+  }
+  .table-info {
+    background-color: var(--info);
+    color: var(--main-color);
+  }
+  .btn {
+    margin-top: 10px;
+    display: block;
+  }
+}

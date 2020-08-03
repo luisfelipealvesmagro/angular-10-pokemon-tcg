@@ -1,0 +1,61 @@
+<div class="row card-detail" *ngIf="card">
+  <div class="col-sm-4 text-left text-md-center">
+    <img [alt]="card.name" class="img-thumbnail img-card" loading="lazy" [src]="card.imageUrlHiRes">
+  </div>
+  <div class="col-sm-8">
+    <span class="name">
+      {{ card.name }}
+    </span>
+    <span class="id">
+      {{ card.id }}
+    </span>
+    <section id="types" *ngIf="card.types">
+      <span class="features types">Types</span>
+      <div class="d-block my-3">
+        <span class="badge badge-info value" *ngFor="let type of card.types">
+          {{ type }}
+        </span>
+      </div>
+    </section>
+    <section id="resistances" *ngIf="card.resistances">
+      <span class="features resistances">Resistances</span>
+      <div class="d-block my-3">
+        <span class="badge badge-info value" *ngFor="let resistance of card.resistances">
+          {{ resistance.type }} <span class="contrast">{{ resistance.value }}</span>
+        </span>
+      </div>
+    </section>
+    <section id="weaknesses" *ngIf="card.weaknesses">
+      <span class="features weaknesses">Weaknesses</span>
+      <div class="d-block my-3">
+        <span class="badge badge-info value" *ngFor="let weakness of card.weaknesses">
+          {{ weakness.type }} <span class="contrast">{{ weakness.value }}</span>
+        </span>
+      </div>
+    </section>
+    <section id="attacks" *ngIf="card.attacks">
+      <span class="features attacks">Attacks</span>
+      <table class="table table-sm table-info mt-3">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Damage</th>
+            <th scope="col">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let atk of card.attacks">
+            <td data-title="Name">{{ atk.name || '-' }}</td>
+            <td data-title="Description">{{ atk.text || '-' }}</td>
+            <td data-title="Damage">{{ atk.damage || '-' }}</td>
+            <td data-title="Cost">{{ atk.cost || '-' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <button class="btn btn-info" type="button" [routerLink]="['']">
+      Back
+    </button>
+  </div>
+</div>

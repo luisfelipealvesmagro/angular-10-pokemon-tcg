@@ -1,0 +1,57 @@
+.table {
+  tbody {
+    tr {
+      td {
+        font-size: 13px;
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .table {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    tbody {
+      tr {
+        border: 1px solid var(--main-color);
+        td {
+          border: none;
+          border-bottom: 0;
+          position: relative;
+          padding-left: 50% !important;
+          white-space: normal;
+          text-align: left;
+          &.sem-registros {
+            padding-left: 0 !important;
+          }
+        }
+        td:before {
+          position: absolute;
+          top: 20%;
+          left: 6px;
+          width: 45%;
+          padding-right: 10px;
+          text-align: left;
+          font-weight: 600;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        td:before {
+          content: attr(data-title);
+        }
+      }
+    }
+  }
+}

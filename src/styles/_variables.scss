@@ -1,0 +1,57 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+:root {
+  --main-color: #fff;
+  --main-background-color: #306cb4;
+}
+
+// color system
+$theme-colors: (
+  "primary": #306cb4,
+  "secondary": #ffcb05,
+  "info": #0d5291,
+);
+
+// grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+// containers breakpoints
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1400px,
+);
+
+// body
+$body-bg: var(--main-background-color);
+$body-color: var(--main-color);
+
+// fonts
+$font-size-base: 1rem;
+$font-family-base: "Helvetica", sans-serif;
+$paragraph-margin-bottom: 0;
+
+// link
+$link-color: var(--primary);
+$link-decoration: none;
+$link-hover-decoration: underline;
+
+// placeholder
+$input-placeholder-color: $gray-500;
+
+// forms
+$input-color: $gray-600;
+$input-border-color: $gray-300;
+
+// buttons
+$btn-padding-x: 20px;
+
+// modal
+$modal-inner-padding: 2rem;

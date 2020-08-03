@@ -1,0 +1,57 @@
+<div class="row" *ngIf="cards">
+  <div class="col-12">
+    <form autocomplete="off" novalidate [formGroup]="form" (ngSubmit)="submitForm()">
+      <div class="form-row">
+        <div class="offset-md-4 col-md-4">
+          <input class="form-control" formControlName="search" (input)="searchPokemon()" placeholder="Search Pokemon" type="text">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row pokemon-cards" *ngIf="cards">
+  <div class="col-md-6 col-lg-4 mb-3" *ngFor="let card of cards | paginate: { itemsPerPage: 6, currentPage: page }">
+    <div class="row">
+      <div class="col-5 d-flex justify-content-center">
+        <img [alt]="card.name" class="img-thumbnail img-card" loading="lazy" [src]="card.imageUrl"
+          [routerLink]="['card', card.id]">
+      </div>
+      <div class="col-7">
+        <span class="name">{{ card.name }}</span>
+        <span class="id">{{ card.id }}</span>
+        <span class="badge badge-secondary" *ngFor="let type of card.types">
+          {{ type }}
+        </span>
+        <button class="btn btn-info" type="button" [routerLink]="['card', card.id]">
+          Details
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-4" *ngIf="cards">
+  <div class="col-12 d-flex justify-content-center">
+    <pagination-template class="pagination" #p="paginationApi" (pageChange)="page = $event">
+      <ul class="list-unstyled list-inline">
+        <li class="list-inline-item">
+          <button class="btn btn-info" (click)="p.previous()" [class.disabled]="p.isFirstPage()"
+            [disabled]="p.isFirstPage()">
+            &#60;
+          </button>
+        </li>
+        <li class="list-inline-item" [class.current]="p.getCurrent() === page.value" *ngFor="let page of p.pages">
+          <button class="btn btn-info" (click)="p.setCurrent(page.value)"
+            [class.active]="p.getCurrent() === page.value">
+            {{ page.label }}
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <button class="btn btn-info" (click)="p.next()" [class.disabled]="p.isLastPage()" [disabled]="p.isLastPage()">
+            &#62;
+          </button>
+        </li>
+      </ul>
+    </pagination-template>
+  </div>
+</div>

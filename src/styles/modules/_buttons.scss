@@ -1,0 +1,11 @@
+.btn {
+  &.btn-secondary {
+    border-bottom: 3px solid var(--info);
+  }
+  &.btn-info {
+    border-bottom: 3px solid var(--secondary);
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
