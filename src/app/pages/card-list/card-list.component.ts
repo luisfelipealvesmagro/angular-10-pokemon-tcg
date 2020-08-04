@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardListService } from './card-list.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-card-list',
@@ -34,18 +35,24 @@ export class CardListComponent implements OnInit {
 
   private buildForm(): void {
     this.form = this.fb.group({
-      search: [null]
+      search: ['']
+    });
+    this.handleSearch();
+  }
+
+  private handleSearch(): void {
+    this.form.get('search').valueChanges.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    ).subscribe((text: string) => {
+      this.searchPokemon(text);
     });
   }
 
-  public submitForm(): void {
-    this.searchPokemon();
-  }
-
-  public searchPokemon(): void {
+  public searchPokemon(text: string): void {
     this.cards = this.cardsCopy;
-    if (this.form.value.search) {
-      this.cards = this.cards.filter((card: any) => card.name.toLowerCase().includes(this.form.value.search));
+    if (text) {
+      this.cards = this.cards.filter((card: any) => card.name.toLowerCase().includes(text.toLowerCase()));
       this.page = 1;
     }
   }

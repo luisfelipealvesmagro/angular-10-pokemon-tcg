@@ -1,9 +1,9 @@
 <div class="row" *ngIf="cards">
   <div class="col-12">
-    <form autocomplete="off" novalidate [formGroup]="form" (ngSubmit)="submitForm()">
+    <form autocomplete="off" novalidate [formGroup]="form">
       <div class="form-row">
         <div class="offset-md-4 col-md-4">
-          <input class="form-control" formControlName="search" (input)="searchPokemon()" placeholder="Search Pokemon" type="text">
+          <input class="form-control" formControlName="search" placeholder="Search Pokemon" type="text">
         </div>
       </div>
     </form>
